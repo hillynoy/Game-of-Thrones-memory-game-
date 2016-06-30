@@ -1,32 +1,60 @@
+
+
 //global variables
+var easyGameActive = false;
+var medGameActive = false;
+var advGameActive = false;
+
 var card1 = new Image();
 var card2 = new Image();
+var count = 0;
 
-var allCards = document.getElementsByClassName('card');
+var createBoard = function (imgArray) {
+    var board = document.getElementById("container");
+    var doubleArray = new Array(imgArray.length * 2);
+    for (var i = 0; i < doubleArray.length; i++) {
+        doubleArray[i] = imgArray[i % imgArray.length ]
+    }
+    doubleArray = shuffle(doubleArray);
+    board.innerHTML = "";
+   // var counter = 0;
+    for (var i = 0; i < doubleArray.length ; i++) {
+            var card = document.createElement('div');
+            card.className = "card";
+            card.addEventListener("click", flipCard);
+            var img = createImage(doubleArray[i]);
+            card.appendChild(img);
+        board.appendChild(card);
 
-//creating an array of the hidden images so I can shuffle them before assigning them to each card
-var createImage = function(src, title) {
-    var img   = new Image();
-    img.src   = src;
-    img.alt   = title;
-    img.title = title;
-    return img;
+    }
 };
 
-var imageArr = [];
+var startAdvancedGame = function(){
+   easyGameActive = true;
+    var imgArray = ["arya1.jpg" ,"cersi1.jpg","drogo1.jpg","joffry1.jpg","snow1.jpg","merg1.jpg","calisi1.jpg", "half1.jpg", "briene1.jpg", "rob1.jpg", "dorn1.jpg", "hound1.jpg"];
+    createBoard(imgArray);
 
-imageArr[0] = createImage("./PICS/c_arya.jpg", 'Image1');
-imageArr[1] = createImage("./PICS/c_cersi.jpg", 'Image2');
-imageArr[2] = createImage("./PICS/c_drogo.jpg", 'Image3');
-imageArr[3] = createImage("./PICS/c_joffry.jpg", 'Image4');
-imageArr[4] = createImage("./PICS/c_snow.jpg", 'Image5');
-imageArr[5] = createImage("./PICS/c_merg.jpg", 'Image6');
-imageArr[6] = createImage("./PICS/c_arya.jpg", 'Image1');
-imageArr[7] = createImage("./PICS/c_cersi.jpg", 'Image2');
-imageArr[8] = createImage("./PICS/c_drogo.jpg", 'Image3');
-imageArr[9] = createImage("./PICS/c_joffry.jpg", 'Image4');
-imageArr[10] = createImage("./PICS/c_snow.jpg", 'Image5');
-imageArr[11] = createImage("./PICS/c_merg.jpg", 'Image6');
+};
+
+var startMediumGame = function(){
+    medGameActive = true;
+    var imgArray = ["arya1.jpg" ,"cersi1.jpg","drogo1.jpg","joffry1.jpg","snow1.jpg","merg1.jpg","calisi1.jpg", "half1.jpg", "briene1.jpg"];
+    createBoard(imgArray);
+};
+
+var startEasyGame = function(){
+    advGameActive = true;
+    var imgArray = ["arya1.jpg" ,"cersi1.jpg","drogo1.jpg","joffry1.jpg","snow1.jpg","merg1.jpg"];
+    createBoard(imgArray);
+};
+
+
+//creating an array of the hidden images so I can shuffle them before assigning them to each card
+var createImage = function(src) {
+    var img   = document.createElement('img');
+    img.src   = "./PICS/" + src;
+    return img;
+};
 
 // shuffling the images on every new round
 function shuffle(a) {
@@ -36,62 +64,73 @@ function shuffle(a) {
         x = a[i - 1];
         a[i - 1] = a[j];
         a[j] = x;
-
     }
     return a
 }
-imageArr = shuffle(imageArr);
-
-// //looping through both the image array and the cards array and assigning them to each other, using their index
-for (var i = 0; i < allCards.length; i++) {
-    allCards[i].appendChild(imageArr[i]);
-}
 
 //function flip a clicked card and store its source
-    var flipCard = function (click) {
-        var card = click.target;
-        var flipped_img = card.getElementsByTagName('img')[0];
-        console.log(flipped_img);//creating an array of the images
-        flipped_img.style.display = "block";
-                         //setting the display of images from hidden to shown
+var flipCard = function (click, easyGameActive) {
+    var card = click.target;
+    var flipped_img = card.getElementsByTagName('img')[0];
+    console.log(flipped_img);//creating an array of the images
+    flipped_img.style.display = "block";
+    //setting the display of images from hidden to shown
 
-        if (card1.src === "") {
-            card1 = flipped_img;                          //check if the first global cardSrc is occupied with a previous code, if so- store the new image src in "card2Src"
-            console.log("this is card 1 ", card1.src);
-        }else{
-            card2 = flipped_img;
-            console.log("this is card 2 " ,card2.src);
-            //todo check if both have the same image src
-            if (card1.src !== card2.src) {
-                console.log("i'm in!!!");
-                setTimeout(function(){card1.style.display = "none";card1 = new Image();}, 1000);
-                setTimeout(function(){card2.style.display = "none";card2 = new Image();}, 1000);
+    if (card1.src === "") {
+        card1 = flipped_img;                          //check if the first global cardSrc is occupied with a previous code, if so- store the new image src in "card2Src"
 
-
-            }
-        //     //else just leave the cards display:block
+    }else{
+        card2 = flipped_img;
+        //check if both have the same image src
+        if (card1.src !== card2.src) {
+            setTimeout(function(){card1.style.display = "none";card1 = new Image();}, 800);
+            setTimeout(function(){card2.style.display = "none";card2 = new Image();}, 800);
         }
+        else {
+            card1 = new Image();
+            card2 = new Image();
+            count = count + 2;
+            console.log(count);
+            console.log(easyGameActive.value);
+
+            if ((easyGameActive === true) && (count === 12)){
+
+              alert("you have won!!!!!");
+            }
+        }
+
+    }
 };
 
+var chooseLevel = function() {
+    var title = document.createElement('div');
+    title.className = "title";
+    title.textContent = "Choose your memory capacity...";
+    document.body.appendChild(title);
 
-var clickedCard = document.getElementsByClassName("card");      //setting every card the click functionality that sends it to the flip function.
-for (var i = 0; i < clickedCard.length; i++) {
-    clickedCard[i].addEventListener("click", flipCard);
+    var easyBtn = document.createElement('button');
+    easyBtn.textContent = "Zombie brain";
+    easyBtn.className = "btn";
+    easyBtn.addEventListener('click', startEasyGame);
+    title.appendChild(easyBtn);
+
+    var medBtn = document.createElement('button');
+    medBtn.textContent = "Wildling brain";
+    medBtn.className = "btn";
+    medBtn.addEventListener('click', startMediumGame);
+    title.appendChild(medBtn);
+
+    var advBtn = document.createElement('button');
+    advBtn.textContent = "Dragon brain";
+    advBtn.className = "btn";
+    advBtn.addEventListener('click', startAdvancedGame);
+    title.appendChild(advBtn);
+};
+
+var ifWon = function(doubleArray) {
+    //todo if all images in the array (array.length) are on display
+
+
 }
 
-
-
-
-
-
-
-
-//todo when click a card show its image -and wait for another input
-//todo after second input-
-
-//function check if equal
-//todo -if src of pic1 and pic2 is equal, keep them with image display-block
-// else- flip back (change back to image- display none- then we see only background)
-// extra if- if all cards are matched- alert- "you have won!"
-
-
+chooseLevel();

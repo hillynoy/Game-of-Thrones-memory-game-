@@ -1,14 +1,22 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: black;
+    background-image: url("../PICS/bg.jpg");
 }
 .card {
     display: inline-block;
     border: 1px solid black;
     height: 280px;
     width: 200px;
-    background-color: #00D5E8;
+    background-image: url("../PICS/cardback.jpg");
+    background-size: contain;
+}
+
+#container{
+    text-align: center;
+    max-width: 1400px;
+    margin: auto;
+
 }
 
 .row {
@@ -20,5 +28,30 @@ img {
     border: 1px solid black;
     height: 280px;
     width: 200px;
-    background-color: #00D5E8;
+}
+.title {
+    color: white;
+    font-size: 30px;
+    font-family: "Montserrat Extra Bold", sans-serif;
+    text-align: center;
+    padding-left:5%;
+    padding-top: 2%;
+    font-weight: bolder;
+
+}
+
+.btn {
+    margin: 1%;
+    border-width: 5px;
+    width: 150px;
+    border-color: #653318;
+    width: 150px;
+    border-radius: 10px;
+    background-color: transparent;
+    display: inline-block;
+    position: static;
+    color: white;
+    font-size: 25px;
+    font-weight: bolder;
+    font-family: "Montserrat Light";
 }
