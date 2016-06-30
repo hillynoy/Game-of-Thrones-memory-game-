@@ -121,7 +121,6 @@ var flipCard = function (click) {
             count = 0;
             advGameActive = false;
             youHaveWon();
-
         }
     }
 };
@@ -152,9 +151,11 @@ var chooseLevel = function () {
 };
 
 var youHaveWon = function() {
-
-var lightBox = document.createElement('div');
-
+    var lightBox = document.createElement('div');
+    lightBox.setAttribute("display", "block");
+    lightBox.id = "lightBox";
+    lightBox.innerHTML = "You have won!!!";
+    document.body.appendChild(lightBox);
 };
 
 chooseLevel();
