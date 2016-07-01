@@ -8,20 +8,6 @@ var card2 = new Image();
 var count = 0;
 
 
-// var lightCard = function(event) {
-//     var card = event.target;
-//     var lightedCard = document.getElementsByClassName('card')[0];
-//
-//     lightedCard.class = lightedCard;
-//     lightedCard.getAttribute("border" , "green");
-//     // lightedCard.style.backgroundColor = "green";
-//
-//     // setTimeout(function () {
-//     //     lightedCard.style.color = "black";
-//     //
-//     // }, 10);
-// };
-
 var createBoard = function (imgArray) {
     var board = document.getElementById("container");
     var doubleArray = new Array(imgArray.length * 2);
@@ -43,25 +29,20 @@ var createBoard = function (imgArray) {
 };
 
 
-
 var startAdvancedGame = function () {
-
     advGameActive = true;
-
     var imgArray = ["arya1.jpg", "cersi1.jpg", "drogo1.jpg", "joffry1.jpg", "snow1.jpg", "merg1.jpg", "calisi1.jpg", "half1.jpg", "briene1.jpg", "rob1.jpg", "dorn1.jpg", "hound1.jpg"];
     createBoard(imgArray);
 };
 
 var startMediumGame = function () {
     medGameActive = true;
-
     var imgArray = ["arya1.jpg", "cersi1.jpg", "drogo1.jpg", "joffry1.jpg", "snow1.jpg", "merg1.jpg", "calisi1.jpg", "half1.jpg", "briene1.jpg"];
     createBoard(imgArray);
 };
 
 var startEasyGame = function () {
     easyGameActive = true;
-
     var imgArray = ["arya1.jpg", "cersi1.jpg", "drogo1.jpg", "joffry1.jpg", "snow1.jpg", "merg1.jpg"];
     createBoard(imgArray);
 };
@@ -125,12 +106,11 @@ var flipCard = function (click) {
             count = 0;
             easyGameActive = false;
             youHaveWon();
-            /* Stop button */
-            stop.onclick = function() {
-                clearTimeout(t);
-            };
+            // /* Stop button */
+            // stop.onclick = function() {
+            //     clearTimeout(t);
+                }
 
-        }
         if ((medGameActive === true) && (count === 18)) {
             count = 0;
             medGameActive = false;
@@ -141,7 +121,6 @@ var flipCard = function (click) {
             count = 0;
             advGameActive = false;
             youHaveWon();
-
         }
     }
 };
@@ -173,7 +152,7 @@ var chooseLevel = function () {
 };
 
 var youHaveWon = function() {
-
+setTimeout(function () {
     var msg = "The Iron Throne is yours!";
     // var  bg = "url('../PICS/thr.jpg')";
 
@@ -181,28 +160,19 @@ var youHaveWon = function() {
     // document.getElementById("message").style.backgroundImage = "url('../PICS/thr.jpg')";
     document.getElementById("lightbox").style.display = "block";
     document.getElementById("lightbox").style.backgroundImage = "url('../PICS/thr.jpg')";
+}, 100);
+
+    setTimeout(function () {
+        var msg = "";
+        // var  bg = "url('../PICS/thr.jpg')";
+
+        document.getElementById("message").innerHTML = msg;
+        // document.getElementById("message").style.backgroundImage = "url('../PICS/thr.jpg')";
+        document.getElementById("lightbox").style.display = "none";
+        // document.getElementById("lightbox").style.backgroundImage = "url('../PICS/thr.jpg')";
+    }, 4000);
 };
 
-
-// setTimeout(function () {
-    //     lightBox.setAttribute("display", "block");
-    //     lightBox.id = "lightBox";
-    //     lightBox.innerHTML = "The Iron Throne is yours!";
-    //     document.body.appendChild(lightBox);
-    // }, 100);
-    // setTimeout(function () {
-    //     // lightBox.setAttribute("visibility", "hidden");
-    //     lightBox.visibility = "hidden";
-    //     lightBox.id = "lightBox";
-    //     lightBox.innerHTML = "";
-    //     document.body.appendChild(lightBox);
-    // }, 2000);
-    // /* Stop button */
-    // var timer = document.getElementsByTagName(h1)[0];
-    // lightBox.appendChild(timer);
-    //
-    //
-    // var newGame
 
 chooseLevel();
 
@@ -229,15 +199,18 @@ function add() {
             hours++;
         }
     }
-
-    h1.textContent = (hours ? (hours > 9 ? hours : "0" + hours) : "00") + ":" + (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds);
-
+    h1.textContent = 
+            (hours ? (hours > 9 ? hours : "0" + hours) 
+            : "00") + ":" + (minutes ? (minutes > 9 ? minutes 
+            : "0" + minutes) : "00") + ":" +
+            (seconds > 9 ? seconds : "0" + seconds);
     timer();
 }
+
+
 function timer(click) {
     t = setTimeout(add, 1000);
 }
-// timer();
 
 
 /* Start button */
