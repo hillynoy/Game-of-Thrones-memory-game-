@@ -173,19 +173,36 @@ var chooseLevel = function () {
 };
 
 var youHaveWon = function() {
-    var lightBox = document.createElement('div');
 
-    lightBox.setAttribute("display", "block");
-    lightBox.id = "lightBox";
-    lightBox.innerHTML = "The Iron Throne is yours!";
-    document.body.appendChild(lightBox);
-    /* Stop button */
-    var timer = document.getElementsByTagName(h1)[0];
-    lightBox.appendChild(timer);
+    var msg = "The Iron Throne is yours!";
+    // var  bg = "url('../PICS/thr.jpg')";
 
-
-    var newGame
+    document.getElementById("message").innerHTML = msg;
+    // document.getElementById("message").style.backgroundImage = "url('../PICS/thr.jpg')";
+    document.getElementById("lightbox").style.display = "block";
+    document.getElementById("lightbox").style.backgroundImage = "url('../PICS/thr.jpg')";
 };
+
+
+// setTimeout(function () {
+    //     lightBox.setAttribute("display", "block");
+    //     lightBox.id = "lightBox";
+    //     lightBox.innerHTML = "The Iron Throne is yours!";
+    //     document.body.appendChild(lightBox);
+    // }, 100);
+    // setTimeout(function () {
+    //     // lightBox.setAttribute("visibility", "hidden");
+    //     lightBox.visibility = "hidden";
+    //     lightBox.id = "lightBox";
+    //     lightBox.innerHTML = "";
+    //     document.body.appendChild(lightBox);
+    // }, 2000);
+    // /* Stop button */
+    // var timer = document.getElementsByTagName(h1)[0];
+    // lightBox.appendChild(timer);
+    //
+    //
+    // var newGame
 
 chooseLevel();
 
