@@ -7,6 +7,21 @@ var card1 = new Image();
 var card2 = new Image();
 var count = 0;
 
+
+// var lightCard = function(event) {
+//     var card = event.target;
+//     var lightedCard = document.getElementsByClassName('card')[0];
+//
+//     lightedCard.class = lightedCard;
+//     lightedCard.getAttribute("border" , "green");
+//     // lightedCard.style.backgroundColor = "green";
+//
+//     // setTimeout(function () {
+//     //     lightedCard.style.color = "black";
+//     //
+//     // }, 10);
+// };
+
 var createBoard = function (imgArray) {
     var board = document.getElementById("container");
     var doubleArray = new Array(imgArray.length * 2);
@@ -20,11 +35,14 @@ var createBoard = function (imgArray) {
         var card = document.createElement('div');
         card.className = "card";
         card.addEventListener("click", flipCard);
+        // card.addEventListener("mouseover",lightCard);
         var img = createImage(doubleArray[i]);
         card.appendChild(img);
         board.appendChild(card);
     }
 };
+
+
 
 var startAdvancedGame = function () {
 
@@ -73,8 +91,8 @@ var flipCard = function (click) {
     if (gameIsOn){
         var card = click.target;
         var flipped_img = card.getElementsByTagName('img')[0];
-        console.log(flipped_img);//creating an array of the images
         flipped_img.style.display = "block";
+
         //setting the display of images from hidden to shown
 
         if (card1.src === "") {
@@ -102,12 +120,15 @@ var flipCard = function (click) {
                 count = count + 2;
                 console.log("counter: ", count );
             }
-
         }
         if ((easyGameActive === true) && (count === 12)) {
             count = 0;
             easyGameActive = false;
             youHaveWon();
+            /* Stop button */
+            stop.onclick = function() {
+                clearTimeout(t);
+            };
 
         }
         if ((medGameActive === true) && (count === 18)) {
@@ -115,12 +136,12 @@ var flipCard = function (click) {
             medGameActive = false;
             youHaveWon();
 
-
         }
         if ((advGameActive === true) && (count === 24)) {
             count = 0;
             advGameActive = false;
             youHaveWon();
+
         }
     }
 };
@@ -134,28 +155,85 @@ var chooseLevel = function () {
     var easyBtn = document.createElement('button');
     easyBtn.textContent = "Zombie brain";
     easyBtn.className = "btn";
-    easyBtn.addEventListener('click', startEasyGame);
+    easyBtn.id = "easyBtn";
+    easyBtn.addEventListener('click', startEasyGame, timer);
     title.appendChild(easyBtn);
 
     var medBtn = document.createElement('button');
     medBtn.textContent = "Wildling brain";
     medBtn.className = "btn";
-    medBtn.addEventListener('click', startMediumGame);
+    medBtn.addEventListener('click', startMediumGame, timer);
     title.appendChild(medBtn);
 
     var advBtn = document.createElement('button');
     advBtn.textContent = "Dragon brain";
     advBtn.className = "btn";
-    advBtn.addEventListener('click', startAdvancedGame);
+    advBtn.addEventListener('click', startAdvancedGame, timer);
     title.appendChild(advBtn);
 };
 
 var youHaveWon = function() {
     var lightBox = document.createElement('div');
+
     lightBox.setAttribute("display", "block");
     lightBox.id = "lightBox";
-    lightBox.innerHTML = "You have won!!!";
+    lightBox.innerHTML = "The Iron Throne is yours!";
     document.body.appendChild(lightBox);
+    /* Stop button */
+    var timer = document.getElementsByTagName(h1)[0];
+    lightBox.appendChild(timer);
+
+
+    var newGame
 };
 
 chooseLevel();
+
+//todo add a random array of copy for the winning message
+//todo timer with "winter in coming" +it took you only...
+
+
+var h1 = document.getElementsByTagName('h1')[0],
+    start = document.getElementsByClassName('btn')[0],
+
+    stop = document.getElementById('stop'),
+    clear = document.getElementById('clear'),
+    seconds = 0, minutes = 0, hours = 0,
+    t;
+
+
+function add() {
+    seconds++;
+    if (seconds >= 60) {
+        seconds = 0;
+        minutes++;
+        if (minutes >= 60) {
+            minutes = 0;
+            hours++;
+        }
+    }
+
+    h1.textContent = (hours ? (hours > 9 ? hours : "0" + hours) : "00") + ":" + (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds);
+
+    timer();
+}
+function timer(click) {
+    t = setTimeout(add, 1000);
+}
+// timer();
+
+
+/* Start button */
+start.onclick = timer;
+
+/* Stop button */
+stop.onclick = function() {
+
+    clearTimeout(t);
+};
+
+/* Clear button */
+clear.onclick = function() {
+    h1.textContent = "00:00:00";
+    seconds = 0; minutes = 0; hours = 0;
+};
