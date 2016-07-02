@@ -98,6 +98,25 @@ h1 {
     /*visibility: hidden;*/
 
 }
+#newGame {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 1234888;
+    transform: translateX(-50%) translateY(5%);
+    border-radius:18px;
+    font-family: Montserrat, Verdana, sans-serif;
+    font-weight: bold;
+    text-shadow: 3px 3px 3px black;
+    display: inline-block;
+    padding: 0;
+    /* top: 100%; */
+    font-size: 20px;
+    background-color: #777f82;
+    color: burlywood;
+    margin-top: 95%;
+}
+
 
 #message{
     background-image: url("../PICS/thr.jpg");

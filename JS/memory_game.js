@@ -148,15 +148,22 @@ var youHaveWon = function() {
         var msg = "The Iron Throne is yours!";
 
         document.getElementById("message").innerHTML = msg;
+        document.body.style.opacity = "0.8";
+
         document.getElementById("lightbox").style.display = "block";
         document.getElementById("lightbox").style.backgroundImage = "url('../PICS/thr.jpg')";
+        document.getElementById("newGame").onclick = function () {
+            var msg = "";
+            document.getElementById("message").innerHTML = msg;
+            document.getElementById("lightbox").style.display = "none";
+        };
     }, 100);
 
-    setTimeout(function () {
-        var msg = "";
-        document.getElementById("message").innerHTML = msg;
-        document.getElementById("lightbox").style.display = "none";
-    }, 4000);
+    // setTimeout(function () {
+    //     var msg = "";
+    //     document.getElementById("message").innerHTML = msg;
+    //     document.getElementById("lightbox").style.display = "none";
+    // }, 10000000);
 };
 
 chooseLevel();
