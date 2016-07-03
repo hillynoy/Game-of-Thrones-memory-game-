@@ -30,8 +30,9 @@ var createBoard = function (imgArray) {
 var startAdvancedGame = function () {
     advGameActive = true;
     $("#title").click (function () {
-        $("#title").hide(3000);
+        $("#title").fade(3000);
     });
+
     var imgArray = ["arya1.jpg", "cersi1.jpg", "drogo1.jpg", "joffry1.jpg", "snow1.jpg", "merg1.jpg", "calisi1.jpg", "half1.jpg", "briene1.jpg", "rob1.jpg", "dorn1.jpg", "hound1.jpg"];
     createBoard(imgArray);
 };
@@ -119,6 +120,7 @@ var flipCard = function (click) {
         if ((advGameActive === true) && (count === 24)) {
             count = 0;
             advGameActive = false;
+            
             youHaveWon();
         }
     }
@@ -166,6 +168,7 @@ var youHaveWon = function() {
             var msg = "";
             document.getElementById("message").innerHTML = msg;
             document.getElementById("lightbox").style.display = "none";
+            chooseLevel();
         };
     }, 100);
 };
