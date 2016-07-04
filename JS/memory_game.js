@@ -31,16 +31,18 @@ var startAdvancedGame = function () {
     advGameActive = true;
     $("#title").click (function () {
         $("#title").fade(3000);
+        timer();
     });
-
     var imgArray = ["arya1.jpg", "cersi1.jpg", "drogo1.jpg", "joffry1.jpg", "snow1.jpg", "merg1.jpg", "calisi1.jpg", "half1.jpg", "briene1.jpg", "rob1.jpg", "dorn1.jpg", "hound1.jpg"];
     createBoard(imgArray);
+
 };
 
 var startMediumGame = function (click) {
     medGameActive = true;
     $("#title").click (function () {
         $("#title").hide(3000);
+        timer();
     });
     var imgArray = ["arya1.jpg", "cersi1.jpg", "drogo1.jpg", "joffry1.jpg", "snow1.jpg", "merg1.jpg", "calisi1.jpg", "half1.jpg", "briene1.jpg"];
     createBoard(imgArray);
@@ -50,6 +52,7 @@ var startEasyGame = function () {
     easyGameActive = true;
     $("#title").click (function () {
         $("#title").hide(3000);
+        timer();
     });
     var imgArray = ["arya1.jpg", "cersi1.jpg", "drogo1.jpg", "joffry1.jpg", "snow1.jpg", "merg1.jpg"];
     createBoard(imgArray);
@@ -110,52 +113,47 @@ var flipCard = function (click) {
             count = 0;
             easyGameActive = false;
             youHaveWon();
+            var title = document.getElementById("title");
+            title.style.display = "block";
         }
+
 
         if ((medGameActive === true) && (count === 18)) {
             count = 0;
             medGameActive = false;
             youHaveWon();
+            var title = document.getElementById("title");
+            title.style.display = "block";
         }
         if ((advGameActive === true) && (count === 24)) {
             count = 0;
             advGameActive = false;
-            
             youHaveWon();
+            var title = document.getElementById("title");
+            title.style.display = "block";
         }
     }
 };
 
 var chooseLevel = function () {
-    var title = document.createElement('div');
+    var title = document.getElementById('title');
     title.className = "title";
-    title.id = "title";
-    title.textContent = "Choose your memory capacity...";
-    document.body.appendChild(title);
 
-    var easyBtn = document.createElement('button');
-    easyBtn.textContent = "Zombie brain";
+    var easyBtn = document.getElementById('easyBtn');
     easyBtn.className = "btn";
-    easyBtn.id = "easyBtn";
     easyBtn.addEventListener('click', startEasyGame, timer);
-    title.appendChild(easyBtn);
 
-    var medBtn = document.createElement('button');
-    medBtn.textContent = "Wildling brain";
+    var medBtn = document.getElementById('medBtn');
     medBtn.className = "btn";
     medBtn.addEventListener('click', startMediumGame, timer);
-    console.log("im in med");
-
-    title.appendChild(medBtn);
-
-    var advBtn = document.createElement('button');
-    advBtn.textContent = "Dragon brain";
-    advBtn.className = "btn";
+    
+    var advBtn = document.getElementById('advBtn');
+    advBtn.className = 'btn';
     advBtn.addEventListener('click', startAdvancedGame, timer);
-    title.appendChild(advBtn);
 };
 
 var youHaveWon = function() {
+
     setTimeout(function () {
         var msg = "The Iron Throne is yours!";
 
@@ -174,6 +172,7 @@ var youHaveWon = function() {
 };
 
 chooseLevel();
+
 var h1 = document.getElementsByTagName('h1')[0],
     start  = document.getElementsByTagName('button')[0],
     stop = document.getElementsByClassName('btn'),
@@ -203,11 +202,9 @@ function timer(click) {
     t = setTimeout(add, 1000);
 }
 
-/* Start button */
 start.onclick = timer;
 
-/* Stop button */
-stop.click = function() {
+stop.onclick = function() {
     clearTimeout(t);
 };
 
