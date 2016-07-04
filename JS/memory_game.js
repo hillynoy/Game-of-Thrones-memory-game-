@@ -6,6 +6,7 @@ var gameIsOn = true;
 var card1 = new Image();
 var card2 = new Image();
 var count = 0;
+var wrongGuess = 0;
 
 
 var createBoard = function (imgArray) {
@@ -100,19 +101,19 @@ var flipCard = function (click) {
                     card2.style.display = "none";
                     card2 = new Image();
                     gameIsOn = true;
+                    wrongGuess++
                 }, 800);
             }
             else {
                 card1 = new Image();
                 card2 = new Image();
                 count = count + 2;
-                console.log("counter: ", count );
             }
         }
         if ((easyGameActive === true) && (count === 12)) {
             count = 0;
             easyGameActive = false;
-            youHaveWon();
+            youHaveWon(wrongGuess);
             var title = document.getElementById("title");
             title.style.display = "block";
         }
@@ -121,14 +122,14 @@ var flipCard = function (click) {
         if ((medGameActive === true) && (count === 18)) {
             count = 0;
             medGameActive = false;
-            youHaveWon();
+            youHaveWon(wrongGuess);
             var title = document.getElementById("title");
             title.style.display = "block";
         }
         if ((advGameActive === true) && (count === 24)) {
             count = 0;
             advGameActive = false;
-            youHaveWon();
+            youHaveWon(wrongGuess);
             var title = document.getElementById("title");
             title.style.display = "block";
         }
@@ -141,21 +142,21 @@ var chooseLevel = function () {
 
     var easyBtn = document.getElementById('easyBtn');
     easyBtn.className = "btn";
-    easyBtn.addEventListener('click', startEasyGame, timer);
+    easyBtn.addEventListener('click', startEasyGame);
 
     var medBtn = document.getElementById('medBtn');
     medBtn.className = "btn";
-    medBtn.addEventListener('click', startMediumGame, timer);
+    medBtn.addEventListener('click', startMediumGame);
     
     var advBtn = document.getElementById('advBtn');
     advBtn.className = 'btn';
-    advBtn.addEventListener('click', startAdvancedGame, timer);
+    advBtn.addEventListener('click', startAdvancedGame);
 };
 
 var youHaveWon = function() {
 
     setTimeout(function () {
-        var msg = "The Iron Throne is yours!";
+        var msg = "The Iron Throne is yours! You had " + wrongGuess + " wrong guesses";
 
         document.getElementById("message").innerHTML = msg;
         document.body.style.opacity = "0.8";
@@ -172,44 +173,3 @@ var youHaveWon = function() {
 };
 
 chooseLevel();
-
-var h1 = document.getElementsByTagName('h1')[0],
-    start  = document.getElementsByTagName('button')[0],
-    stop = document.getElementsByClassName('btn'),
-    clear = document.getElementById('clear'),
-    seconds = 0, minutes = 0, hours = 0,
-    t;
-
-function add() {
-    seconds++;
-    if (seconds >= 60) {
-        seconds = 0;
-        minutes++;
-        if (minutes >= 60) {
-            minutes = 0;
-            hours++;
-        }
-    }
-    h1.textContent =
-        (hours ? (hours > 9 ? hours : "0" + hours)
-            : "00") + ":" + (minutes ? (minutes > 9 ? minutes
-            : "0" + minutes) : "00") + ":" +
-        (seconds > 9 ? seconds : "0" + seconds);
-    timer();
-}
-
-function timer(click) {
-    t = setTimeout(add, 1000);
-}
-
-start.onclick = timer;
-
-stop.onclick = function() {
-    clearTimeout(t);
-};
-
-/* Clear button */
-clear.click = function() {
-    h1.textContent = "00:00:00";
-    seconds = 0; minutes = 0; hours = 0;
-};
