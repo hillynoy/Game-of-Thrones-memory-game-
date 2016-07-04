@@ -1,7 +1,7 @@
 body {
     margin: 0;
     padding: 0;
-    background-image: url("../PICS/bg.jpg");
+    background-image: url("../../../itcMemoryGame/PICS/bg.jpg");
 }
 .card {
     display: inline-block;
@@ -102,7 +102,7 @@ h1 {
 
 
 #message{
-    background-image: url("../PICS/thr.jpg");
+    background-image: url("../../../itcMemoryGame/PICS/thr.jpg");
     display: inline-block;
     position: absolute;
     left: 50%;
