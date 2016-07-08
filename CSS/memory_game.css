@@ -84,16 +84,15 @@ h1 {
 }
 #newGame {
     position: absolute;
-    top: 50%;
     z-index: 1234888;
-    transform: translateX(-50%) translateY(600%);
+    transform: translateX(-50%) translateY(-150%);
     border-radius:18px;
     font-family: "Montserrat Light", "sans-serif", "Lucida Sans Typewriter";
     font-weight: bold;
     text-shadow: 3px 3px 3px black;
     display: inline-block;
     padding: 0;
-    font-size: 20px;
+    font-size: 25px;
     background-color: #777f82;
     color: burlywood;
 }

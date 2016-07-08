@@ -161,7 +161,7 @@ var youHaveWon = function() {
         document.body.style.opacity = "0.8";
 
         document.getElementById("lightbox").style.display = "block";
-        document.getElementById("lightbox").style.backgroundImage = "url('../PICS/thr.jpg')";
+        document.getElementById("lightbox").style.backgroundImage = "url('../pics/throne.jpg')";
         document.getElementById("newGame").onclick = function () {
             var msg = "";
             document.getElementById("message").innerHTML = msg;
