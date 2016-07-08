@@ -1,14 +1,16 @@
 body {
     margin: 0;
     padding: 0;
-    background-image: url("../../../itcMemoryGame/PICS/bg.jpg");
+    background-image: url("../pics/mapcover3.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 .card {
     display: inline-block;
     border: 1px solid black;
     height: 280px;
     width: 200px;
-    background-image: url("../PICS/cardback.jpg");
+    background-image: url("../pics/cardback.jpg");
     background-size: contain;
     border-radius: 10px;
 
@@ -33,7 +35,7 @@ img {
     border-radius: 10px;
 }
 .title {
-    color: #d5c7a1;;
+    color: #6a6875;
     font-size: 30px;
     font-family: "Montserrat Extra Bold", sans-serif;
     text-align: center;
@@ -46,7 +48,7 @@ img {
     margin: 1%;
     border-width: 5px;
     width: 150px;
-    border-color: #d5c7a1;
+    border-color: #6a6875;
     width: 150px;
     border-radius: 10px;
     background-color: rgba(143,142,138,0.66);
