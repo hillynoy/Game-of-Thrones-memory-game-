@@ -32,7 +32,6 @@ var startAdvancedGame = function () {
     advGameActive = true;
     $("#title").click (function () {
         $("#title").fade(3000);
-        timer();
     });
     var imgArray = ["arya1.jpg", "cersi1.jpg", "drogo1.jpg", "joffry1.jpg", "snow1.jpg", "merg1.jpg", "calisi1.jpg", "half1.jpg", "briene1.jpg", "rob1.jpg", "dorn1.jpg", "hound1.jpg"];
     createBoard(imgArray);
@@ -43,7 +42,6 @@ var startMediumGame = function (click) {
     medGameActive = true;
     $("#title").click (function () {
         $("#title").hide(3000);
-        timer();
     });
     var imgArray = ["arya1.jpg", "cersi1.jpg", "drogo1.jpg", "joffry1.jpg", "snow1.jpg", "merg1.jpg", "calisi1.jpg", "half1.jpg", "briene1.jpg"];
     createBoard(imgArray);
@@ -62,7 +60,7 @@ var startEasyGame = function () {
 //creating an array of the hidden images so I can shuffle them before assigning them to each card
 var createImage = function (src) {
     var img = document.createElement('img');
-    img.src = "./PICS/" + src;
+    img.src = "./pics/" + src;
     return img;
 };
 
@@ -109,30 +107,26 @@ var flipCard = function (click) {
                 count = count + 2;
             }
         }
+
         if ((easyGameActive === true) && (count === 12)) {
-            count = 0;
-            easyGameActive = false;
-            youHaveWon(wrongGuess);
-            var title = document.getElementById("title");
-            title.style.display = "block";
+            checkIfGameIsOver(easyGameActive);
         }
-
-
-        if ((medGameActive === true) && (count === 18)) {
-            count = 0;
-            medGameActive = false;
-            youHaveWon(wrongGuess);
-            var title = document.getElementById("title");
-            title.style.display = "block";
+        else if ((medGameActive === true) && (count === 18)) {
+            console.log("in the condition for med");
+            checkIfGameIsOver(medGameActive);
         }
-        if ((advGameActive === true) && (count === 24)) {
-            count = 0;
-            advGameActive = false;
-            youHaveWon(wrongGuess);
-            var title = document.getElementById("title");
-            title.style.display = "block";
+        else if ((advGameActive === true) && (count === 24)) {
+            checkIfGameIsOver(advGameActive);
         }
     }
+};
+
+var checkIfGameIsOver = function (level) {
+    count = 0;
+    level = false;
+    youHaveWon(wrongGuess);
+    var title = document.getElementById("title");
+    title.style.display = "block";
 };
 
 var chooseLevel = function () {
@@ -155,7 +149,7 @@ var chooseLevel = function () {
 var youHaveWon = function() {
 
     setTimeout(function () {
-        var msg = "The Iron Throne is yours! You had " + wrongGuess + " wrong guesses";
+        var msg = "The Iron Throne is yours! <br/> You had " + wrongGuess + " wrong guesses";
 
         document.getElementById("message").innerHTML = msg;
         document.body.style.opacity = "0.8";
