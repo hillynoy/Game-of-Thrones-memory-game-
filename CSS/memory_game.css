@@ -37,7 +37,7 @@ img {
 .title {
     color: #6a6875;
     font-size: 30px;
-    font-family: "Montserrat Extra Bold", sans-serif;
+    font-family: "Montserrat Light", "sans-serif", "Lucida Sans Typewriter";
     text-align: center;
     padding-left:5%;
     margin:0;
@@ -47,7 +47,6 @@ img {
 .btn {
     margin: 1%;
     border-width: 5px;
-    width: 150px;
     border-color: #6a6875;
     width: 150px;
     border-radius: 10px;
@@ -57,7 +56,7 @@ img {
     color: #432312;;
     font-size: 25px;
     font-weight: bolder;
-    font-family: "Montserrat Light";
+    font-family: "Montserrat Light", "sans-serif", "Lucida Sans Typewriter";
 }
 
 h1 {
@@ -72,7 +71,7 @@ h1 {
     position: fixed;
     background-color: rgba(0,0,0,0.5);
     z-index: 123;
-    font-family: "Montserrat Light";
+    font-family: "Montserrat Light", "sans-serif", "Lucida Sans Typewriter";
     font-size: 35px;
     width: 500px;
     height: 0px;
@@ -85,12 +84,11 @@ h1 {
 }
 #newGame {
     position: absolute;
-
     top: 50%;
     z-index: 1234888;
     transform: translateX(-50%) translateY(600%);
     border-radius:18px;
-    font-family: Montserrat, Verdana, sans-serif;
+    font-family: "Montserrat Light", "sans-serif", "Lucida Sans Typewriter";
     font-weight: bold;
     text-shadow: 3px 3px 3px black;
     display: inline-block;
@@ -108,16 +106,13 @@ h1 {
     background-repeat: no-repeat;
     background-position: center;
     display: inline-block;
-    /*margin-left: 50%;*/
-    /*left: 50%;*/
-    /*top: 30%;*/
+
     z-index: 123456;
-    /*transform: translateX(-50%) translateY(5%);*/
     padding: 150px;
     font-size: 25px;
     border-radius:18px;
     color: antiquewhite;
-    font-family: Montserrat, Verdana, sans-serif;
+    font-family: "Montserrat Light", "sans-serif", "Lucida Sans Typewriter";
     font-weight: bold;
     text-shadow: 3px 3px 3px black;
 }
