@@ -85,38 +85,37 @@ h1 {
 }
 #newGame {
     position: absolute;
-    left: 50%;
+
     top: 50%;
     z-index: 1234888;
-    transform: translateX(-50%) translateY(5%);
+    transform: translateX(-50%) translateY(600%);
     border-radius:18px;
     font-family: Montserrat, Verdana, sans-serif;
     font-weight: bold;
     text-shadow: 3px 3px 3px black;
     display: inline-block;
     padding: 0;
-    /* top: 100%; */
     font-size: 20px;
     background-color: #777f82;
     color: burlywood;
-    margin-top: 95%;
 }
 
 
 #message{
-    background-image: url("../../../itcMemoryGame/PICS/thr.jpg");
-    display: inline-block;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    z-index: 123456;
-    transform: translateX(-50%) translateY(5%);
-    padding: 150px;
-    font-size: 25px;
-    border-radius:18px;
+    position: relative;
+    background-image: url("../pics/throne.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    display: inline-block;
+    /*margin-left: 50%;*/
+    /*left: 50%;*/
+    /*top: 30%;*/
+    z-index: 123456;
+    /*transform: translateX(-50%) translateY(5%);*/
+    padding: 150px;
+    font-size: 25px;
+    border-radius:18px;
     color: antiquewhite;
     font-family: Montserrat, Verdana, sans-serif;
     font-weight: bold;
