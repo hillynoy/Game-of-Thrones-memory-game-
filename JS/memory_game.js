@@ -53,7 +53,6 @@ var startEasyGame = function () {
     easyGameActive = true;
     $("#title").click (function () {
         $("#title").hide(3000);
-        timer();
     });
     var imgArray = ["arya1.jpg", "cersi1.jpg", "drogo1.jpg", "joffry1.jpg", "snow1.jpg", "merg1.jpg"];
     createBoard(imgArray);
