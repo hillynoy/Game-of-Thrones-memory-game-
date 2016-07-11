@@ -109,21 +109,22 @@ var flipCard = function (click) {
         }
 
         if ((easyGameActive === true) && (count === 12)) {
-            checkIfGameIsOver(easyGameActive);
+            resetGame();
         }
         else if ((medGameActive === true) && (count === 18)) {
-            console.log("in the condition for med");
-            checkIfGameIsOver(medGameActive);
+            resetGame();
         }
         else if ((advGameActive === true) && (count === 24)) {
-            checkIfGameIsOver(advGameActive);
+            resetGame();
         }
     }
 };
 
-var checkIfGameIsOver = function (level) {
+var resetGame = function () {
+    easyGameActive = false;
+    medGameActive = false;
+    advGameActive = false;
     count = 0;
-    level = false;
     youHaveWon(wrongGuess);
     var title = document.getElementById("title");
     title.style.display = "block";
