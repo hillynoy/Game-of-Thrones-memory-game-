@@ -10,14 +10,11 @@ var wrongGuess = 0;
 
 
 var createBoard = function (imgArray) {
-    console.log("im in create board");
-
     var board = document.getElementById("container");
     var doubleArray = new Array(imgArray.length * 2);
     for (var i = 0; i < doubleArray.length; i++) {
         doubleArray[i] = imgArray[i % imgArray.length]
     }
-    console.log("im in  create board2");
 
     doubleArray = shuffle(doubleArray);
     board.innerHTML = "";
@@ -28,7 +25,6 @@ var createBoard = function (imgArray) {
         var img = createImage(doubleArray[i]);
         card.appendChild(img);
         board.appendChild(card);
-        console.log("im in  create board3 after shuffle");
 
     }
 };
